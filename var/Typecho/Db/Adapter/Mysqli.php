@@ -31,7 +31,7 @@ class Typecho_Db_Adapter_Mysqli implements Typecho_Db_Adapter
      */
     public static function isAvailable()
     {
-        return class_exists('MySQLi');
+        return class_exists('mysqli');
     }
 
     /**
@@ -44,7 +44,7 @@ class Typecho_Db_Adapter_Mysqli implements Typecho_Db_Adapter
     public function connect(Typecho_Config $config)
     {
 
-        if ($this->_dbLink = @new MySQLi($config->host, $config->user, $config->password, $config->database, (empty($config->port) ? '' : $config->port))) {
+        if ($this->_dbLink = @new mysqli($config->host, $config->user, $config->password, $config->database, (empty($config->port) ? '' : $config->port))) {
             if ($config->charset) {
                 $this->_dbLink->query("SET NAMES '{$config->charset}'");
             }
