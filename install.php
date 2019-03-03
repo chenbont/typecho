@@ -115,12 +115,12 @@ function _v($name, $default = '') {
  */
 function _p($adapter) {
     switch ($adapter) {
-        case 'Mysql':
-            return Typecho_Db_Adapter_Mysql::isAvailable();
-        case 'Mysqli':
-            return Typecho_Db_Adapter_Mysqli::isAvailable();
-        case 'Pdo_Mysql':
-            return Typecho_Db_Adapter_Pdo_Mysql::isAvailable();
+        case 'mysql':
+            return Typecho_Db_Adapter_mysql::isAvailable();
+        case 'mysqli':
+            return Typecho_Db_Adapter_mysqli::isAvailable();
+        case 'Pdo_mysql':
+            return Typecho_Db_Adapter_Pdo_mysql::isAvailable();
         case 'SQLite':
             return Typecho_Db_Adapter_SQLite::isAvailable();
         case 'Pdo_SQLite':
@@ -263,7 +263,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                     $config = unserialize(base64_decode(Typecho_Cookie::get('__typecho_config')));
                                     $type = explode('_', $config['adapter']);
                                     $type = array_pop($type);
-                                    $type = $type == 'Mysqli' ? 'Mysql' : $type;
+                                    $type = $type == 'mysqli' ? 'mysql' : $type;
                                     $installDb = $db;
 
                                     try {
@@ -388,7 +388,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                 <div class="typecho-install-body">
                     <form method="post" action="?start" name="check">
 <?php
-                                        if(('Mysql' == $type && (1050 == $code || '42S01' == $code)) ||
+                                        if(('mysql' == $type && (1050 == $code || '42S01' == $code)) ||
                                         ('SQLite' == $type && ('HY000' == $code || 1 == $code)) ||
                                         ('Pgsql' == $type && '42P07' == $code)) {
                                             if(_r('delete')) {
@@ -396,7 +396,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                                 $dbPrefix = $config['prefix'];
                                                 $tableArray = array($dbPrefix . 'comments', $dbPrefix . 'contents', $dbPrefix . 'fields', $dbPrefix . 'metas', $dbPrefix . 'options', $dbPrefix . 'relationships', $dbPrefix . 'users',);
                                                 foreach($tableArray as $table) {
-                                                    if($type == 'Mysql') {
+                                                    if($type == 'mysql') {
                                                         $installDb->query("DROP TABLE IF EXISTS `{$table}`");
                                                     } elseif($type == 'Pgsql') {
                                                         $installDb->query("DROP TABLE {$table}");
@@ -430,7 +430,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                 <?php endif;?>
             <?php elseif (isset($_GET['config'])): ?>
             <?php
-                    $adapters = array('Mysql', 'Mysqli', 'Pdo_Mysql', 'SQLite', 'Pdo_SQLite', 'Pgsql', 'Pdo_Pgsql');
+                    $adapters = array('mysql', 'mysqli', 'Pdo_mysql', 'SQLite', 'Pdo_SQLite', 'Pgsql', 'Pdo_Pgsql');
                     foreach ($adapters as $firstAdapter) {
                         if (_p($firstAdapter)) {
                             break;
@@ -439,7 +439,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                     $adapter = _r('dbAdapter', $firstAdapter);
                     $parts = explode('_', $adapter);
 
-                    $type = $adapter == 'Mysqli' ? 'Mysql' : array_pop($parts);
+                    $type = $adapter == 'mysqli' ? 'mysql' : array_pop($parts);
             ?>
                 <form method="post" action="?config" name="config">
                     <h1 class="typecho-install-title"><?php _e('确认您的配置'); ?></h1>
@@ -572,10 +572,10 @@ Typecho_Db::set(\$db);
                             <li>
                             <label for="dbAdapter" class="typecho-label"><?php _e('数据库适配器'); ?></label>
                             <select name="dbAdapter" id="dbAdapter">
-                                <?php if (_p('Mysql')): ?><option value="Mysql"<?php if('Mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Mysql 原生函数适配器') ?></option><?php endif; ?>
+                                <?php if (_p('mysql')): ?><option value="mysql"<?php if('mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('mysql 原生函数适配器') ?></option><?php endif; ?>
                                 <?php if (_p('SQLite')): ?><option value="SQLite"<?php if('SQLite' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('SQLite 原生函数适配器 (SQLite 2.x)') ?></option><?php endif; ?>
                                 <?php if (_p('Pgsql')): ?><option value="Pgsql"<?php if('Pgsql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pgsql 原生函数适配器') ?></option><?php endif; ?>
-                                <?php if (_p('Pdo_Mysql')): ?><option value="Pdo_Mysql"<?php if('Pdo_Mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 Mysql 适配器') ?></option><?php endif; ?>
+                                <?php if (_p('Pdo_mysql')): ?><option value="Pdo_mysql"<?php if('Pdo_mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 mysql 适配器') ?></option><?php endif; ?>
                                 <?php if (_p('Pdo_SQLite')): ?><option value="Pdo_SQLite"<?php if('Pdo_SQLite' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 SQLite 适配器 (SQLite 3.x)') ?></option><?php endif; ?>
                                 <?php if (_p('Pdo_Pgsql')): ?><option value="Pdo_Pgsql"<?php if('Pdo_Pgsql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 PostgreSql 适配器') ?></option><?php endif; ?>
                             </select>

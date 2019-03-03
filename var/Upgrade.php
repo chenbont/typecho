@@ -199,7 +199,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         //删除老数据
         try {
             switch (true) {
-                case false !== strpos($adapterName, 'Mysql'):
+                case false !== strpos($adapterName, 'mysql'):
                     $db->query('ALTER TABLE  `' . $prefix . 'users` DROP  `meta`', Typecho_Db::WRITE);
                     break;
 
@@ -253,7 +253,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         //将slug字段长度增加到150
         try {
             switch (true) {
-                case false !== strpos($adapterName, 'Mysql'):
+                case false !== strpos($adapterName, 'mysql'):
                     $db->query("ALTER TABLE  `" . $prefix . "contents` MODIFY COLUMN `slug` varchar(150)", Typecho_Db::WRITE);
                     $db->query("ALTER TABLE  `" . $prefix . "metas` MODIFY COLUMN `slug` varchar(150)", Typecho_Db::WRITE);
                     break;
@@ -559,7 +559,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $adapterName = $db->getAdapterName();
         $prefix  = $db->getPrefix();
 
-        if (false !== strpos($adapterName, 'Mysql')) {
+        if (false !== strpos($adapterName, 'mysql')) {
             $db->query("ALTER TABLE  `{$prefix}contents` CHANGE  `text`  `text` LONGTEXT NULL DEFAULT NULL COMMENT  '内容文字'", Typecho_Db::WRITE);
         }
     }
@@ -721,7 +721,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $prefix  = $db->getPrefix();
 
         switch (true) {
-            case false !== strpos($adapterName, 'Mysql'):
+            case false !== strpos($adapterName, 'mysql'):
                 $db->query('ALTER TABLE  `' . $prefix . 'contents` ADD  `parent` INT(10) UNSIGNED NULL DEFAULT \'0\'', Typecho_Db::WRITE);
                 break;
 
@@ -1026,7 +1026,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $prefix  = $db->getPrefix();
 
         switch (true) {
-            case false !== strpos($adapterName, 'Mysql'):
+            case false !== strpos($adapterName, 'mysql'):
                 $config = $db->getConfig();
                 $db->query("CREATE TABLE `{$prefix}fields` (
   `cid` int(10) unsigned NOT NULL,
@@ -1123,7 +1123,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $prefix  = $db->getPrefix();
 
         switch (true) {
-            case false !== strpos($adapterName, 'Mysql'):
+            case false !== strpos($adapterName, 'mysql'):
                 $db->query('ALTER TABLE  `' . $prefix . 'metas` ADD  `parent` INT(10) UNSIGNED NULL DEFAULT \'0\'', Typecho_Db::WRITE);
                 break;
 
@@ -1277,7 +1277,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $prefix  = $db->getPrefix();
 
         switch (true) {
-            case false !== strpos($adapterName, 'Mysql'):
+            case false !== strpos($adapterName, 'mysql'):
                 $db->query("ALTER TABLE  `" . $prefix . "comments` MODIFY COLUMN `agent` varchar(511)", Typecho_Db::WRITE);
                 break;
 
@@ -1341,7 +1341,7 @@ Typecho_Date::setTimezoneOffset($options->timezone);
         $prefix  = $db->getPrefix();
 
         switch (true) {
-            case false !== strpos($adapterName, 'Mysql'):
+            case false !== strpos($adapterName, 'mysql'):
                 $db->query("ALTER TABLE  `" . $prefix . "comments` MODIFY COLUMN `url` varchar(255)", Typecho_Db::WRITE);
                 break;
 

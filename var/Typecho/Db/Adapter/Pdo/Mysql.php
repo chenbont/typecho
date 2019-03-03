@@ -5,15 +5,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @copyright  Copyright (c) 2008 Typecho team (http://www.typecho.org)
  * @license    GNU General Public License 2.0
- * @version    $Id: Mysql.php 89 2008-03-31 00:10:57Z magike.net $
+ * @version    $Id: mysql.php 89 2008-03-31 00:10:57Z magike.net $
  */
 
 /**
- * 数据库Pdo_Mysql适配器
+ * 数据库Pdo_mysql适配器
  *
  * @package Db
  */
-class Typecho_Db_Adapter_Pdo_Mysql extends Typecho_Db_Adapter_Pdo
+class Typecho_Db_Adapter_Pdo_mysql extends Typecho_Db_Adapter_Pdo
 {
     /**
      * 判断适配器是否可用
@@ -50,7 +50,7 @@ class Typecho_Db_Adapter_Pdo_Mysql extends Typecho_Db_Adapter_Pdo
     {
         $pdo = new PDO(!empty($config->dsn) ? $config->dsn :
             "mysql:dbname={$config->database};host={$config->host};port={$config->port}", $config->user, $config->password);
-        $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        $pdo->setAttribute(PDO::mysql_ATTR_USE_BUFFERED_QUERY, true);
         $pdo->exec("SET NAMES '{$config->charset}'");
         return $pdo;
     }

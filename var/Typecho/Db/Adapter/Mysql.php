@@ -5,15 +5,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @copyright  Copyright (c) 2008 Typecho team (http://www.typecho.org)
  * @license    GNU General Public License 2.0
- * @version    $Id: Mysql.php 103 2008-04-09 16:22:43Z magike.net $
+ * @version    $Id: mysql.php 103 2008-04-09 16:22:43Z magike.net $
  */
 
 /**
- * 数据库Mysql适配器
+ * 数据库mysql适配器
  *
  * @package Db
  */
-class Typecho_Db_Adapter_Mysql implements Typecho_Db_Adapter
+class Typecho_Db_Adapter_mysql implements Typecho_Db_Adapter
 {
     /**
      * 数据库连接字符串标示

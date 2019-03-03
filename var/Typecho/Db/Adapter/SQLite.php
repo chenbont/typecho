@@ -5,7 +5,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @copyright  Copyright (c) 2008 Typecho team (http://www.typecho.org)
  * @license    GNU General Public License 2.0
- * @version    $Id: Mysql.php 103 2008-04-09 16:22:43Z magike.net $
+ * @version    $Id: mysql.php 103 2008-04-09 16:22:43Z magike.net $
  */
 
 /**

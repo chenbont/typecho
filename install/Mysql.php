@@ -3,7 +3,7 @@
 <?php
 $engine = '';
 
-if (defined('SAE_MYSQL_DB') && SAE_MYSQL_DB != "app_") {
+if (defined('SAE_mysql_DB') && SAE_mysql_DB != "app_") {
     $engine = 'SAE';
 } else if (!!getenv('HTTP_BAE_ENV_ADDR_SQL_IP')) {
     $engine = 'BAE';
@@ -19,18 +19,18 @@ if (defined('SAE_MYSQL_DB') && SAE_MYSQL_DB != "app_") {
 <?php if ('SAE' == $engine): ?>
 <!-- SAE -->
     <input type="hidden" name="config" value="array (
-    'host'      =>  SAE_MYSQL_HOST_M,
-    'user'      =>  SAE_MYSQL_USER,
-    'password'  =>  SAE_MYSQL_PASS,
+    'host'      =>  SAE_mysql_HOST_M,
+    'user'      =>  SAE_mysql_USER,
+    'password'  =>  SAE_mysql_PASS,
     'charset'   =>  '{charset}',
-    'port'      =>  SAE_MYSQL_PORT,
-    'database'  =>  SAE_MYSQL_DB
+    'port'      =>  SAE_mysql_PORT,
+    'database'  =>  SAE_mysql_DB
 )" />
-    <input type="hidden" name="dbHost" value="<?php echo SAE_MYSQL_HOST_M; ?>" />
-    <input type="hidden" name="dbPort" value="<?php echo SAE_MYSQL_PORT; ?>" />
-    <input type="hidden" name="dbUser" value="<?php echo SAE_MYSQL_USER; ?>" />
-    <input type="hidden" name="dbPassword" value="<?php echo SAE_MYSQL_PASS; ?>" />
-    <input type="hidden" name="dbDatabase" value="<?php echo SAE_MYSQL_DB; ?>" />
+    <input type="hidden" name="dbHost" value="<?php echo SAE_mysql_HOST_M; ?>" />
+    <input type="hidden" name="dbPort" value="<?php echo SAE_mysql_PORT; ?>" />
+    <input type="hidden" name="dbUser" value="<?php echo SAE_mysql_USER; ?>" />
+    <input type="hidden" name="dbPassword" value="<?php echo SAE_mysql_PASS; ?>" />
+    <input type="hidden" name="dbDatabase" value="<?php echo SAE_mysql_DB; ?>" />
 <?php elseif ('BAE' == $engine):
 $baeDbUser = "getenv('HTTP_BAE_ENV_AK')";
 $baeDbPassword = "getenv('HTTP_BAE_ENV_SK')";
@@ -57,7 +57,7 @@ $baeDbPassword = "getenv('HTTP_BAE_ENV_SK')";
     <li>
         <label class="typecho-label" for="dbDatabase"><?php _e('数据库名'); ?></label>
         <input type="text" class="text" id="dbDatabase" name="dbDatabase" value="<?php _v('dbDatabase'); ?>" />
-        <p class="description"><?php _e('可以在MySQL服务的管理页面看到您创建的数据库名称'); ?></p>
+        <p class="description"><?php _e('可以在mysql服务的管理页面看到您创建的数据库名称'); ?></p>
     </li>
     <input type="hidden" name="config" value="array (
     'host'      =>  getenv('HTTP_BAE_ENV_ADDR_SQL_IP'),
@@ -153,7 +153,7 @@ $baeDbPassword = "getenv('HTTP_BAE_ENV_SK')";
             <option value="utf8"<?php if (_r('dbCharset') == 'utf8'): ?> selected<?php endif; ?>>utf8</option>
             <option value="utf8mb4"<?php if (_r('dbCharset') == 'utf8mb4'): ?> selected<?php endif; ?>>utf8mb4</option>
         </select>
-        <p class="description"><?php _e('选择 utf8mb4 编码至少需要 MySQL 5.5.3 版本'); ?></p>
+        <p class="description"><?php _e('选择 utf8mb4 编码至少需要 mysql 5.5.3 版本'); ?></p>
     </li>
 
     <li>
