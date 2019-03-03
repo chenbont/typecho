@@ -50,7 +50,7 @@ RUN mkdir /php && cd /php && \
     echo "date.timezone="$php_timezone >> /php/etc/php.ini && \
     sed -i 's/error_reporting = /#error_reporting = /g' /php/etc/php.ini && \
     sed -i 's/display_errors = /#display_errors = /g' /php/etc/php.ini && \
-    sed -i 's/pdo_mysql.default_socket\s*=/pdo_mysql.default_socket = \/var\/run\/mysqld\/mysqld.sock/g' /php/etc/php.ini && \
+    sed -i 's/pdo_Mysql.default_socket\s*=/pdo_Mysql.default_socket = \/var\/run\/mysqld\/mysqld.sock/g' /php/etc/php.ini && \
     echo "always_populate_raw_post_data=-1" >> /php/etc/php.ini && \
     echo "error_reporting=E_ALL" >> /php/etc/php.ini && \
     echo "display_errors=On" >> /php/etc/php.ini && \

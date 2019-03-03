@@ -3,7 +3,7 @@
 <?php
 $engine = '';
 
-if (defined('SAE_mysql_DB') && SAE_mysql_DB != "app_") {
+if (defined('SAE_Mysql_DB') && SAE_Mysql_DB != "app_") {
     $engine = 'SAE';
 } else if (!!getenv('HTTP_BAE_ENV_ADDR_SQL_IP')) {
     $engine = 'BAE';
@@ -19,18 +19,18 @@ if (defined('SAE_mysql_DB') && SAE_mysql_DB != "app_") {
 <?php if ('SAE' == $engine): ?>
 <!-- SAE -->
     <input type="hidden" name="config" value="array (
-    'host'      =>  SAE_mysql_HOST_M,
-    'user'      =>  SAE_mysql_USER,
-    'password'  =>  SAE_mysql_PASS,
+    'host'      =>  SAE_Mysql_HOST_M,
+    'user'      =>  SAE_Mysql_USER,
+    'password'  =>  SAE_Mysql_PASS,
     'charset'   =>  '{charset}',
-    'port'      =>  SAE_mysql_PORT,
-    'database'  =>  SAE_mysql_DB
+    'port'      =>  SAE_Mysql_PORT,
+    'database'  =>  SAE_Mysql_DB
 )" />
-    <input type="hidden" name="dbHost" value="<?php echo SAE_mysql_HOST_M; ?>" />
-    <input type="hidden" name="dbPort" value="<?php echo SAE_mysql_PORT; ?>" />
-    <input type="hidden" name="dbUser" value="<?php echo SAE_mysql_USER; ?>" />
-    <input type="hidden" name="dbPassword" value="<?php echo SAE_mysql_PASS; ?>" />
-    <input type="hidden" name="dbDatabase" value="<?php echo SAE_mysql_DB; ?>" />
+    <input type="hidden" name="dbHost" value="<?php echo SAE_Mysql_HOST_M; ?>" />
+    <input type="hidden" name="dbPort" value="<?php echo SAE_Mysql_PORT; ?>" />
+    <input type="hidden" name="dbUser" value="<?php echo SAE_Mysql_USER; ?>" />
+    <input type="hidden" name="dbPassword" value="<?php echo SAE_Mysql_PASS; ?>" />
+    <input type="hidden" name="dbDatabase" value="<?php echo SAE_Mysql_DB; ?>" />
 <?php elseif ('BAE' == $engine):
 $baeDbUser = "getenv('HTTP_BAE_ENV_AK')";
 $baeDbPassword = "getenv('HTTP_BAE_ENV_SK')";

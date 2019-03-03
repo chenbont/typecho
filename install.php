@@ -116,11 +116,11 @@ function _v($name, $default = '') {
 function _p($adapter) {
     switch ($adapter) {
         case 'mysql':
-            return Typecho_Db_Adapter_mysql::isAvailable();
+            return Typecho_Db_Adapter_Mysql::isAvailable();
         case 'mysqli':
-            return Typecho_Db_Adapter_mysqli::isAvailable();
-        case 'Pdo_mysql':
-            return Typecho_Db_Adapter_Pdo_mysql::isAvailable();
+            return Typecho_Db_Adapter_Mysqli::isAvailable();
+        case 'Pdo_Mysql':
+            return Typecho_Db_Adapter_Pdo_Mysql::isAvailable();
         case 'SQLite':
             return Typecho_Db_Adapter_SQLite::isAvailable();
         case 'Pdo_SQLite':
@@ -430,7 +430,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                 <?php endif;?>
             <?php elseif (isset($_GET['config'])): ?>
             <?php
-                    $adapters = array('mysql', 'mysqli', 'Pdo_mysql', 'SQLite', 'Pdo_SQLite', 'Pgsql', 'Pdo_Pgsql');
+                    $adapters = array('mysql', 'mysqli', 'Pdo_Mysql', 'SQLite', 'Pdo_SQLite', 'Pgsql', 'Pdo_Pgsql');
                     foreach ($adapters as $firstAdapter) {
                         if (_p($firstAdapter)) {
                             break;
@@ -575,7 +575,7 @@ Typecho_Db::set(\$db);
                                 <?php if (_p('mysql')): ?><option value="mysql"<?php if('mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('mysql 原生函数适配器') ?></option><?php endif; ?>
                                 <?php if (_p('SQLite')): ?><option value="SQLite"<?php if('SQLite' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('SQLite 原生函数适配器 (SQLite 2.x)') ?></option><?php endif; ?>
                                 <?php if (_p('Pgsql')): ?><option value="Pgsql"<?php if('Pgsql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pgsql 原生函数适配器') ?></option><?php endif; ?>
-                                <?php if (_p('Pdo_mysql')): ?><option value="Pdo_mysql"<?php if('Pdo_mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 mysql 适配器') ?></option><?php endif; ?>
+                                <?php if (_p('Pdo_Mysql')): ?><option value="Pdo_Mysql"<?php if('Pdo_Mysql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 mysql 适配器') ?></option><?php endif; ?>
                                 <?php if (_p('Pdo_SQLite')): ?><option value="Pdo_SQLite"<?php if('Pdo_SQLite' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 SQLite 适配器 (SQLite 3.x)') ?></option><?php endif; ?>
                                 <?php if (_p('Pdo_Pgsql')): ?><option value="Pdo_Pgsql"<?php if('Pdo_Pgsql' == $adapter): ?> selected="selected"<?php endif; ?>><?php _e('Pdo 驱动 PostgreSql 适配器') ?></option><?php endif; ?>
                             </select>

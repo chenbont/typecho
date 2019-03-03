@@ -9,11 +9,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  */
 
 /**
- * 数据库Pdo_mysql适配器
+ * 数据库Pdo_Mysql适配器
  *
  * @package Db
  */
-class Typecho_Db_Adapter_Pdo_mysql extends Typecho_Db_Adapter_Pdo
+class Typecho_Db_Adapter_Pdo_Mysql extends Typecho_Db_Adapter_Pdo
 {
     /**
      * 判断适配器是否可用

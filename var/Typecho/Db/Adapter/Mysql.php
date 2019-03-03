@@ -13,7 +13,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Db
  */
-class Typecho_Db_Adapter_mysql implements Typecho_Db_Adapter
+class Typecho_Db_Adapter_Mysql implements Typecho_Db_Adapter
 {
     /**
      * 数据库连接字符串标示
