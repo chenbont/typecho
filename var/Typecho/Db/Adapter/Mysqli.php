@@ -5,11 +5,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @copyright  Copyright (c) 2008 Typecho team (http://www.typecho.org)
  * @license    GNU General Public License 2.0
- * @version    $Id: mysqli.php 103 2008-04-09 16:22:43Z magike.net $
+ * @version    $Id: Mysqli.php 103 2008-04-09 16:22:43Z magike.net $
  */
 
 /**
- * 数据库mysqli适配器
+ * 数据库Mysqli适配器
  *
  * @package Db
  */
@@ -31,7 +31,7 @@ class Typecho_Db_Adapter_Mysqli implements Typecho_Db_Adapter
      */
     public static function isAvailable()
     {
-        return class_exists('mysqli_connect');
+        return class_exists('MySQLi');
     }
 
     /**
@@ -44,7 +44,7 @@ class Typecho_Db_Adapter_Mysqli implements Typecho_Db_Adapter
     public function connect(Typecho_Config $config)
     {
 
-        if ($this->_dbLink = @new mysqli_connect($config->host, $config->user, $config->password, $config->database, (empty($config->port) ? '' : $config->port))) {
+        if ($this->_dbLink = @new MySQLi($config->host, $config->user, $config->password, $config->database, (empty($config->port) ? '' : $config->port))) {
             if ($config->charset) {
                 $this->_dbLink->query("SET NAMES '{$config->charset}'");
             }
